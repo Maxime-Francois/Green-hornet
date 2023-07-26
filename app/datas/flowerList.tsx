@@ -17,8 +17,8 @@ export const flowerList = [
     water: 3,
     cover: monstera,
     price: 15,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   {
     name: "ficus lyrata",
@@ -28,8 +28,8 @@ export const flowerList = [
     water: 1,
     cover: lyrata,
     price: 16,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
 
   {
@@ -40,8 +40,8 @@ export const flowerList = [
     water: 2,
     cover: pothos,
     price: 9,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   {
     name: "calathea",
@@ -51,8 +51,8 @@ export const flowerList = [
     water: 3,
     cover: calathea,
     price: 20,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   {
     name: "olivier",
@@ -62,8 +62,8 @@ export const flowerList = [
     water: 1,
     cover: olivier,
     price: 25,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
 
   {
@@ -74,8 +74,8 @@ export const flowerList = [
     water: 1,
     cover: cactus,
     price: 6,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   {
     name: "basilique",
@@ -86,8 +86,8 @@ export const flowerList = [
     water: 3,
     cover: basil,
     price: 5,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
   {
     name: "succulente",
@@ -97,7 +97,7 @@ export const flowerList = [
     water: 1,
     cover: succulent,
     price: 8,
-    width: 200,
-    height: 150,
+    width: 100,
+    height: 100,
   },
 ];

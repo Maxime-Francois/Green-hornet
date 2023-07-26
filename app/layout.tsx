@@ -2,8 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from './components/navbar/Navbar';
-import Carousel from './components/home/Carousel';
 import Fleurs from './components/home/Fleurs';
+import Banner from './components/home/Banner';
+import Resine from './components/home/Resine';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,8 +23,9 @@ export default function Layout({
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Carousel/>
+        <Banner/>
         <Fleurs/>
+        <Resine/>
       </body>
     </html>
   );

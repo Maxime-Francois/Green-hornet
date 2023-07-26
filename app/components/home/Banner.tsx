@@ -1,9 +1,8 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 
-
-const Carousel: React.FC = () => {
+const Banner: React.FC = () => {
   const [activeItem, setActiveItem] = useState(0);
   const carouselItems = [
     '/images/carousel/banner1.jpg',
@@ -14,9 +13,9 @@ const Carousel: React.FC = () => {
     setActiveItem((prevItem) => (prevItem === 0 ? carouselItems.length - 1 : prevItem - 1));
   };
 
-  const handleNextClick = () => {
+   const handleNextClick = useCallback(() => {
     setActiveItem((prevItem) => (prevItem === carouselItems.length - 1 ? 0 : prevItem + 1));
-  };
+  }, [carouselItems.length]);
 
   // Autoplay functionality
   useEffect(() => {
@@ -27,7 +26,7 @@ const Carousel: React.FC = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [activeItem]);
+  }, [activeItem, handleNextClick]); // Ajoutez handleNextClick au tableau des dépendances
 
   return (
     <div id="default-carousel" className="relative w-full" data-carousel="slide">
@@ -107,4 +106,4 @@ const Carousel: React.FC = () => {
   );
 };
 
-export default Carousel;
+export default Banner;

@@ -4,7 +4,6 @@
 import React, { useState } from 'react';
 import Image from "next/image"
 import { HiOutlineSearch } from 'react-icons/hi';
-import { Menu } from '@headlessui/react';
 import { AiOutlineUser } from 'react-icons/ai';
 import {SlBasket} from 'react-icons/sl'
 
