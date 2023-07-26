@@ -1,0 +1,30 @@
+.searchbar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.searchbar.visible {
+    display: flex;
+}
+
+/* Vous pouvez personnaliser le style de la barre de recherche ici */
+.searchbar.visible input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.searchBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+        gap: 8px;
+    padding: 10px;
+}
+
+.search-icon {
+    cursor: pointer;
+}
