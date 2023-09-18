@@ -19,6 +19,7 @@ export const flowerList = [
     price: 15,
     width: 100,
     height: 100,
+    rating: 4.5,
   },
   {
     name: "ficus lyrata",
@@ -30,6 +31,7 @@ export const flowerList = [
     price: 16,
     width: 100,
     height: 100,
+    rating: 4,
   },
 
   {
@@ -42,6 +44,7 @@ export const flowerList = [
     price: 9,
     width: 100,
     height: 100,
+    rating: 4,
   },
   {
     name: "calathea",
@@ -53,6 +56,7 @@ export const flowerList = [
     price: 20,
     width: 100,
     height: 100,
+    rating: 5,
   },
   {
     name: "olivier",
@@ -64,6 +68,7 @@ export const flowerList = [
     price: 25,
     width: 100,
     height: 100,
+    rating: 4,
   },
 
   {
@@ -76,6 +81,7 @@ export const flowerList = [
     price: 6,
     width: 100,
     height: 100,
+    rating: 4,
   },
   {
     name: "basilique",
@@ -88,6 +94,7 @@ export const flowerList = [
     price: 5,
     width: 100,
     height: 100,
+    rating: 2,
   },
   {
     name: "succulente",
@@ -99,5 +106,6 @@ export const flowerList = [
     price: 8,
     width: 100,
     height: 100,
+    rating: 3,
   },
 ];

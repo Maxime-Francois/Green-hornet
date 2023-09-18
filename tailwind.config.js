@@ -17,6 +17,7 @@ module.exports = {
       colors: {
         shitColor: "#A9764A",
         weedColor: "#10ad2b",
+        oilColor: "#5b59ea",
       },
     },
   },

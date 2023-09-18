@@ -16,4 +16,41 @@ body,
         max-width: 1200px;
         width: 90%;
 }
+.rating {
+  display:flex;
+      margin-bottom: 0.5rem;
+}
+
+
+/* Style pour les étoiles */
+.star {
+  font-size: 24px;
+  /* Taille de la police pour les étoiles */
+  color:#FFD000 ;
+  /* Couleur par défaut de l'étoile vide */
+}
+
+.star.filled {
+  color: #FFD000;
+  /* Couleur de l'étoile remplie */
+}
+
+.star.half {
+  position: relative;
+  color: #FFD000;
+  /* Couleur de l'étoile remplie */
+}
+
+.star.half:before {
+  content: "\f089";
+  /* Code Unicode pour une demi-étoile (FaStarHalf) */
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+
+
+
 

@@ -4,6 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image, { StaticImageData } from "next/image";
+import Rating from '../Rating'; 
+import Link from 'next/link';
+
 
 interface Flower {
   name: string;
@@ -57,6 +60,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ flowerData }) => {
     <Slider {...settings}>
       {flowerData.map((flower) => (
         <div key={flower.id} className="px-4 ">
+           <Link href={`/flower/${flower.id}`} passHref>
           <div className="bg-white rounded-lg shadow-md p-4 cursor-pointer hover:shadow-xl ease-in-out duration-300">
             <Image
               src={flower.cover}
@@ -65,11 +69,13 @@ const Slideshow: React.FC<SlideshowProps> = ({ flowerData }) => {
             />
             <h2 className="text-lg font-semibold mb-2">{flower.name}</h2>
             <p className="text-gray-600 mb-2">{flower.category}</p>
-            <p className="text-gray-600 mb-2">
+            {/* <p className="text-gray-600 mb-2">
               Light: {flower.light}, Water: {flower.water}
-            </p>
+            </p> */}
+           <Rating value={flower.rating} />
             <p className="text-gray-600 mb-2">${flower.price}</p>
           </div>
+          </Link>
         </div>
       ))}
     </Slider>
