@@ -6,7 +6,6 @@ import { Fragment } from 'react'
 import { useState } from 'react';
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import '../../styles/Search.css'
 import Search, { SetSearchVisibleFn } from './Search';
 
 function classNames(...classes:any) {

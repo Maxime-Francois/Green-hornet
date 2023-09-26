@@ -50,6 +50,13 @@ body,
   overflow: hidden;
 }
 
+/* responsive  */
+
+@media (min-width: 999px) {
+  #dropdownNavbarUser{
+    left: -150px;
+  }
+}
 
 
 
