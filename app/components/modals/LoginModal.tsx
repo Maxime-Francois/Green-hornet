@@ -95,12 +95,12 @@ const LoginModal = () => {
             icon={FcGoogle}
             onClick={() => {}}
             />
-            <Button 
+            {/* <Button 
             outline
             label= "Connexion avec Facebook "
             icon={BsFacebook}
             onClick={() => {}}
-            />
+            /> */}
             <div className='
             text-neutral-500
             text-center
@@ -109,16 +109,16 @@ const LoginModal = () => {
             '>
                 <div className='justify-center flex flex-row items-center gap-2'>
                     <div>
-                        Vous avez déja un compte ? 
+                        Vous n&apos;avez pas encore de compte ? 
                     </div>
                      <div
-                     onClick={RegisterModal.onClose}
+                     onClick={RegisterModal.onOpen}
                      className='
                      text-neutral-800
                      cursor-pointer
                      hover:underline
                      '>
-                       Connexion
+                       Créez votre compte
                     </div>
                 </div>
             </div>

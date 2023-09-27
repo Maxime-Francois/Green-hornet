@@ -11,14 +11,18 @@ import {
     useForm
 } from 'react-hook-form';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import useLoginModal from '@/app/hooks/useLogin';
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import toast from 'react-hot-toast';
 import Button from '../Button';
+import { signIn } from 'next-auth/react';
+
 
 const RegisterModal = () => {
     const RegisterModal = useRegisterModal();
+     const LoginModal = useLoginModal()
     const [isLoading, setIsLoading] =  useState(false);
 
     const {
@@ -92,14 +96,14 @@ const RegisterModal = () => {
             outline
             label= "Connexion avec Google"
             icon={FcGoogle}
-            onClick={() => {}}
+            onClick={() => signIn('google')}
             />
-            <Button 
+            {/* <Button 
             outline
             label= "Connexion avec Facebook "
             icon={BsFacebook}
-            onClick={() => {}}
-            />
+            onClick={() => signIn('facebook')}
+            /> */}
             <div className='
             text-neutral-500
             text-center
@@ -111,7 +115,7 @@ const RegisterModal = () => {
                         Vous avez déja un compte ? 
                     </div>
                      <div
-                     onClick={RegisterModal.onClose}
+                      onClick={LoginModal.onOpen}
                      className='
                      text-neutral-800
                      cursor-pointer
