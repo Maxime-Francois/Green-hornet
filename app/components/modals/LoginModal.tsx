@@ -109,16 +109,16 @@ const LoginModal = () => {
             '>
                 <div className='justify-center flex flex-row items-center gap-2'>
                     <div>
-                        Vous n&apos;avez pas encore de compte ? 
+                        Vous avez déja un compte ? 
                     </div>
                      <div
-                     onClick={RegisterModal.onOpen}
+                     onClick={RegisterModal.onClose}
                      className='
                      text-neutral-800
                      cursor-pointer
                      hover:underline
                      '>
-                       Créez votre compte
+                       Connexion
                     </div>
                 </div>
             </div>
