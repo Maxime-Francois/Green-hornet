@@ -1,8 +1,16 @@
+import Banner from "./components/Banner";
+
+import ContainerSlide from "./components/products/ContainerSlide";
+
 
 export default function Home() {
   return (
-    <div className="text-rose-500 text-2xl">
-     
+    <div>
+          <Banner/>
+          <ContainerSlide category="fleur"/>
+          <ContainerSlide category="résine"/>
+          <ContainerSlide category="huile"/>
+        
     </div>
   )
 }

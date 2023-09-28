@@ -44,5 +44,15 @@ model Account {
     @@unique([provider, providerAccountId])
 }
 
+model Product {
+  id String@id @default(auto()) @map("_id") @db.ObjectId
+  name String?
+  description String
+  category String
+  price Float
+  image String
+  rating Float
+}
+
 
 
