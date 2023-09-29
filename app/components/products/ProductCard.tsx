@@ -8,11 +8,11 @@ interface ProductCardProps {
    name: string;
   category: string;
   id: string;
-  cover: StaticImageData;
-  price: number;
-  rating:number;
-  description:string;
-  inStock:boolean;
+  cover: StaticImageData,
+  price: number,
+  rating:number,
+  description:string,
+  inStock:boolean,
    
   };
 }
