@@ -35,7 +35,7 @@ export const products = [
   },
 
   {
-    name: "purple dream",
+   name: "Purple dream",
     category: "fleur",
     id: "3sd",
     light: 1,
@@ -45,6 +45,51 @@ export const products = [
     width: 100,
     height: 100,
     rating: 4,
+    description: "La Purple Dream est une fleur de CBD exceptionnelle qui associe les délices gustatifs du CBD (cannabidiol) aux propriétés relaxantes de la variété de cannabis indica. Elle se caractérise par sa couleur violette profonde, son arôme enivrant aux notes florales et son goût riche et complexe mêlant saveurs terreuses, boisées et fruits rouges. Cette variété est spécialement cultivée pour son taux élevé de CBD, offrant une relaxation profonde sans effets psychoactifs. Elle peut être consommée de diverses manières, mais consultez toujours un professionnel de la santé avant usage, et respectez les lois locales sur le CBD.",
+    inStock: true,
+    reviews: [
+      {
+        id: "6499b4887402b0efd394d8f3",
+        userId: "6499b184b0e9a8c8709821d3",
+        productId: "3sd",
+        rating: 4,
+        comment:
+          "good enough. I like the camera and casing. the delivery was fast too.",
+        createdDate: "2023-06-26T15:53:44.483Z",
+        user: {
+          id: "6499b184b0e9a8c8709821d3",
+          name: "Chaoo",
+          email: "example1@gmail.com",
+          emailVerified: null,
+          image:
+            "https://lh3.googleusercontent.com/a/AAcHTtcuRLwWi1vPKaQOcJlUurlhRAIIq2LgYccE8p32=s96-c",
+          hashedPassword: null,
+          createdAt: "2023-06-26T15:40:52.558Z",
+          updatedAt: "2023-06-26T15:40:52.558Z",
+          role: "USER",
+        },
+      },
+      {
+        id: "6499a110efe4e4de451c7edc",
+        userId: "6475af156bad4917456e6e1e",
+        productId: "3sd",
+        rating: 5,
+        comment: "I really liked it!!",
+        createdDate: "2023-06-26T14:30:40.998Z",
+        user: {
+          id: "6475af156bad4917456e6e1e",
+          name: "Charles",
+          email: "example@gmail.com",
+          emailVerified: null,
+          image:
+            "https://lh3.googleusercontent.com/a/AAcHTteOiCtILLBWiAoolIW9PJH-r5825pBDl824_8LD=s96-c",
+          hashedPassword: null,
+          createdAt: "2023-05-30T08:08:53.979Z",
+          updatedAt: "2023-05-30T08:08:53.979Z",
+          role: "ADMIN",
+        },
+      },
+    ],
   },
     {
     name: "pinapple",

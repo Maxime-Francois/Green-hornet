@@ -2,6 +2,7 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Rating from './Rating'; 
 import Link from 'next/link';
+import { formatPrice } from "@/app/utils/formatPrice";
 
 interface ProductCardProps {
     product: {
@@ -30,7 +31,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
           <p className="text-gray-600 mb-2">{product.category}</p>
           <Rating value={product.rating} />
-          <p className="text-gray-600 mb-2">{product.price} €</p>
+          <p className="text-gray-600 mb-2">{formatPrice(product.price)}</p>
          
           {/* Ajoutez ici d'autres informations du produit si nécessaire */}
         </div>

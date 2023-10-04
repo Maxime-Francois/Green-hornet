@@ -10,12 +10,15 @@ import useRegisterModal from '@/app/hooks/useRegisterModal';
 import useLoginModal from '@/app/hooks/useLogin';
 import { signOut } from 'next-auth/react';
 import { SafeUser } from '@/app/types';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import CartCount from './CartCount';
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 
-
+const router = useRouter;
 
 const Navbar:React.FC<NavbarProps> = ({ 
   currentUser
@@ -26,6 +29,7 @@ const Navbar:React.FC<NavbarProps> = ({
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownMobileOpen, setDropdownMobileOpen] = useState(false);
   const [isDropdownUserOpen, setDropdownUserOpen] = useState(false);
+  const [isCartOpen, setCartOpen] = useState(false); 
   
 
   const toggleDropdown = () => {
@@ -38,12 +42,18 @@ const Navbar:React.FC<NavbarProps> = ({
    const toggleUserDropdown = () => {
     setDropdownUserOpen(!isDropdownUserOpen);
   };
+    const toggleCart = () => {
+      setCartOpen(!isCartOpen);
+    };
+
 
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 shadow">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="#" className="flex items-center gap-3">
+          <Link href={'/'}>
+          
+          <div className="flex items-center gap-3">
             <Image   
             alt="logo" 
         className="hidden md:block cursor-pointer"
@@ -53,7 +63,8 @@ const Navbar:React.FC<NavbarProps> = ({
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               GREEN HORNET CBD
             </span>
-          </a>
+          </div>
+          </Link>
           <button
             data-collapse-toggle="navbar-dropdown"
             type="button"
@@ -157,7 +168,7 @@ const Navbar:React.FC<NavbarProps> = ({
                     >
                       <li>
                         <a
-                          href="#dashboard"  // Replace "#" with the dashboard page link
+                          href="#dashboard" 
                           className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Dashboard
@@ -205,7 +216,7 @@ const Navbar:React.FC<NavbarProps> = ({
           
                     <ul className='flex flex-col font-medium  p-4 md:p-0  rounded-lg bg-gray-50 md:flex-row md:space-x-4 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
                           <li className='block py-2 pl-3 pr-4 text-gray-900 rounded cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#0FD531]-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>
-                            <HiOutlineSearch size={20} color="black" />
+                            <HiOutlineSearch size={25} color="black" />
                           </li>
 
 
@@ -217,7 +228,7 @@ const Navbar:React.FC<NavbarProps> = ({
                             className="flex items-center justify-between w-full py-2 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-400 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                             onClick={toggleUserDropdown}
                           >
-                            <AiOutlineUser size={20} color="black" />{" "}
+                            <AiOutlineUser size={25} color="black" />{" "}
                           
                           </button>
                           {/* Dropdown user menu */}
@@ -235,7 +246,7 @@ const Navbar:React.FC<NavbarProps> = ({
                                 aria-labelledby="dropdownLargeButton">
                                     <li>
                                       <div
-                                        // Replace "#" with the dashboard page link
+                                       
                                         onClick={() => {}}
                                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
@@ -244,7 +255,7 @@ const Navbar:React.FC<NavbarProps> = ({
                                     </li>
                                     <li>
                                       <div
-                                        // Replace "#" with the dashboard page link
+                                    
                                          onClick={() => {}}
                                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
@@ -253,7 +264,7 @@ const Navbar:React.FC<NavbarProps> = ({
                                     </li>
                                     <li>
                                       <div
-                                        // Replace "#" with the settings page link
+                                      
                                         onClick={() => signOut()}
                                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
@@ -270,7 +281,7 @@ const Navbar:React.FC<NavbarProps> = ({
                                 aria-labelledby="dropdownLargeButton">
                                     <li>
                                       <div
-                                        // Replace "#" with the dashboard page link
+                                       
                                         onClick={loginModal.onOpen}
                                         className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
@@ -294,12 +305,14 @@ const Navbar:React.FC<NavbarProps> = ({
                 
                 </li>
 
+                <Link href={"/cart"}>
                 <li className='block py-2 pl-3 pr-4 text-gray-900 rounded cursor-pointer hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-300 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>
 
-                <SlBasket size={20} color="black"  />
+                <CartCount/>
                   
                   
                 </li>
+                </Link>
             </ul>
             </div>
          

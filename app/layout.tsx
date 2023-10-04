@@ -7,6 +7,7 @@ import RegisterModal from "./components/modals/RegisterModal"
 import ToasterProvider from "./providers/ToasterProvider"
 import LoginModal from "./components/modals/LoginModal"
 import getCurrentUser from "./actions/getCurrentUser"
+import CartProvider from "./providers/CartProvider"
 
 export const metadata = {
   title: 'GREEN HORNET CBD',
@@ -22,7 +23,8 @@ export default  async function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body suppressHydrationWarning={true}>
+        <CartProvider>
         <ClientOnly>
           <ToasterProvider/>
           <LoginModal/>
@@ -31,7 +33,7 @@ export default  async function RootLayout({
         </ClientOnly>
         {children}
         <Footer/>
-        
+         </CartProvider>
         </body>
     </html>
   )
