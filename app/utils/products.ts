@@ -1,11 +1,3 @@
-import monstera from "../../public/images/flowers/monstera.jpeg";
-import lyrata from "../../public/images/flowers/lyrata.jpeg";
-import pothos from "../../public/images/flowers/pothos.jpeg";
-import succulent from "../../public/images/flowers/succulent.jpeg";
-import olivier from "../../public/images/flowers/olivier.jpeg";
-import basil from "../../public/images/flowers/basil.jpeg";
-import calathea from "../../public/images/flowers/calathea.jpeg";
-import cactus from "../../public/images/flowers/cactus.jpeg";
 
 export const products = [
   {
@@ -15,7 +7,7 @@ export const products = [
     bestSale: true,
     light: 2,
     water: 3,
-    cover: monstera,
+    cover: "https://i.ibb.co/T2SZnz1/purple-haze-cbd.webp",
     price: 15,
     width: 100,
     height: 100,
@@ -27,7 +19,7 @@ export const products = [
     id: "2ab",
     light: 3,
     water: 1,
-    cover: lyrata,
+    cover: "https://i.ibb.co/nzc3q4Q/fleur-cbd-super-skunk.webp",
     price: 16,
     width: 100,
     height: 100,
@@ -35,17 +27,18 @@ export const products = [
   },
 
   {
-   name: "Purple dream",
+    name: "Purple dream",
     category: "fleur",
     id: "3sd",
     light: 1,
     water: 2,
-    cover: pothos,
+    cover: "https://i.ibb.co/pypx1Yj/purpledream0610.jpg",
     price: 9,
     width: 100,
     height: 100,
     rating: 4,
-    description: "La Purple Dream est une fleur de CBD exceptionnelle qui associe les délices gustatifs du CBD (cannabidiol) aux propriétés relaxantes de la variété de cannabis indica. Elle se caractérise par sa couleur violette profonde, son arôme enivrant aux notes florales et son goût riche et complexe mêlant saveurs terreuses, boisées et fruits rouges. Cette variété est spécialement cultivée pour son taux élevé de CBD, offrant une relaxation profonde sans effets psychoactifs. Elle peut être consommée de diverses manières, mais consultez toujours un professionnel de la santé avant usage, et respectez les lois locales sur le CBD.",
+    description:
+      "La Purple Dream est une fleur de CBD exceptionnelle qui associe les délices gustatifs du CBD (cannabidiol) aux propriétés relaxantes de la variété de cannabis indica. Elle se caractérise par sa couleur violette profonde, son arôme enivrant aux notes florales et son goût riche et complexe mêlant saveurs terreuses, boisées et fruits rouges. Cette variété est spécialement cultivée pour son taux élevé de CBD, offrant une relaxation profonde sans effets psychoactifs. Elle peut être consommée de diverses manières, mais consultez toujours un professionnel de la santé avant usage, et respectez les lois locales sur le CBD.",
     inStock: true,
     reviews: [
       {
@@ -91,25 +84,25 @@ export const products = [
       },
     ],
   },
-    {
+  {
     name: "pinapple",
     category: "fleur",
     id: "4sd",
     light: 1,
     water: 2,
-    cover: pothos,
+    cover: "https://i.ibb.co/qBmwSft/fleur-cbd-pineapple-express.jpg",
     price: 9,
     width: 100,
     height: 100,
     rating: 4,
   },
-      {
+  {
     name: "kush",
     category: "fleur",
     id: "4sd",
     light: 1,
     water: 2,
-    cover: pothos,
+    cover: "https://i.ibb.co/fXTMWxK/bubba-kush-cbd.jpg",
     price: 9,
     width: 100,
     height: 100,
@@ -121,7 +114,7 @@ export const products = [
     id: "4kk",
     light: 2,
     water: 3,
-    cover: calathea,
+    cover: "https://i.ibb.co/YQ50Q3c/resine-supreme-ketama-30-nature-cbd.png",
     price: 20,
     width: 100,
     height: 100,
@@ -133,7 +126,7 @@ export const products = [
     id: "5pl",
     light: 3,
     water: 1,
-    cover: olivier,
+    cover: "https://i.ibb.co/2q4N7M0/62-cbd-triple-filtre.jpg",
     price: 25,
     width: 100,
     height: 100,
@@ -146,98 +139,101 @@ export const products = [
     id: "8fp",
     light: 2,
     water: 1,
-    cover: cactus,
+    cover: "https://i.ibb.co/LncNVXm/resine-cbd-le-jaune.jpg",
     price: 6,
     width: 100,
     height: 100,
     rating: 4,
   },
-   {
+  {
     name: "beldia",
     category: "résine",
     id: "9fp",
     light: 2,
     water: 1,
-    cover: cactus,
+    cover: "https://i.ibb.co/Sd934PX/beldia-resine-cbg-cbn.jpg",
     price: 6,
     width: 100,
     height: 100,
     rating: 4,
   },
-    {
+  {
     name: "icolator",
     category: "résine",
     id: "9fp",
     light: 2,
     water: 1,
-    cover: cactus,
+    cover: "https://i.ibb.co/F46h590/resine-cbd-ice-o-lator-40.jpg",
     price: 6,
     width: 100,
     height: 100,
     rating: 4,
   },
-  
+
   {
-    name: "huile full spectrum",
+    name: "huile full spectrum 50%",
     category: "huile",
     id: "7ie",
     bestSale: true,
     light: 2,
     water: 3,
-    cover: basil,
+    cover:
+      "https://i.ibb.co/HBRjCyZ/huile-de-cbd-5-a-50-full-spectrum-harvest-laboratoires.webp",
     price: 5,
     width: 100,
     height: 100,
     rating: 2,
   },
   {
-    name: "huile ya zebi",
+    name: "huile cookie 40%",
     category: "huile",
     id: "9vn",
     light: 2,
     water: 1,
-    cover: succulent,
-    price: 8,
-    width: 100,
-    height: 100,
-    rating: 3,
-  },
-  
-    {
-    name: "huile 900mg",
-    category: "huile",
-    id: "9vn",
-    light: 2,
-    water: 1,
-    cover: succulent,
-    price: 8,
-    width: 100,
-    height: 100,
-    rating: 3,
-  },
-     {
-    name: "huile 1000mg",
-    category: "huile",
-    id: "9vn",
-    light: 2,
-    water: 1,
-    cover: succulent,
-    price: 8,
-    width: 100,
-    height: 100,
-    rating: 3,
-  },
-     {
-    name: "huile 30000mg",
-    category: "huile",
-    id: "9vn",
-    light: 2,
-    water: 1,
-    cover: succulent,
+    cover: "https://i.ibb.co/PGhdRvq/Huile-40-CBD-Cookie.webp",
     price: 8,
     width: 100,
     height: 100,
     rating: 3,
   },
 
+  {
+    name: "huile 3000mg",
+    category: "huile",
+    id: "9vn",
+    light: 2,
+    water: 1,
+    cover:
+      "https://i.ibb.co/hLKPMvg/huile-cbd-30-3000mg-stilla-full-spectrum.webp",
+    price: 8,
+    width: 100,
+    height: 100,
+    rating: 3,
+  },
+  {
+    name: "huile 1000mg 10%",
+    category: "huile",
+    id: "9vn",
+    light: 2,
+    water: 1,
+    cover:
+      "https://i.ibb.co/QY9kG4f/Huile-CBD-10-Granions-flacon-pipette-de-10ml-37601552151.jpg",
+    price: 8,
+    width: 100,
+    height: 100,
+    rating: 3,
+  },
+  {
+    name: "huile 20%",
+    category: "huile",
+    id: "9vn",
+    light: 2,
+    water: 1,
+    cover:
+      "https://i.ibb.co/YQ09KhR/Huile-CBD-20-Granions-flacon-pipette-de-10ml-37601552151.jpg",
+    price: 8,
+    width: 100,
+    height: 100,
+    rating: 3,
+  },
 ];

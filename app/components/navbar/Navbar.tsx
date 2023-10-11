@@ -30,6 +30,7 @@ const Navbar:React.FC<NavbarProps> = ({
   const [isDropdownMobileOpen, setDropdownMobileOpen] = useState(false);
   const [isDropdownUserOpen, setDropdownUserOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false); 
+
   
 
   const toggleDropdown = () => {
@@ -98,13 +99,14 @@ const Navbar:React.FC<NavbarProps> = ({
           >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a
-                  href="#home"  // Replace "#" with your home page link
+                <Link href={'/'}>
+                <div
                   className="block py-2 pl-3 pr-4 text-white bg-green-400 rounded md:bg-transparent md:text-green-400 md:p-0 md:dark:text-green-400 dark:bg-green-400 md:dark:bg-transparent"
                   aria-current="page"
                 >
                   Accueil
-                </a>
+                </div>
+                </Link>
               </li>
              
               <li>

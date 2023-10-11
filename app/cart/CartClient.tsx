@@ -6,9 +6,20 @@ import Heading from "../components/Heading";
 import Button from "../components/Button";
 import ItemContent from "./ItemContent";
 import { formatPrice } from "../utils/formatPrice";
+import { SafeUser } from "../types";
+import { useRouter } from "next/navigation";
 
-const CartClient = () => {
+import useLoginModal from "@/app/hooks/useLogin";
+
+interface CartClientProps {
+  currentUser: SafeUser | null;
+}
+
+const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart();
+
+  const router = useRouter();
+  const loginModal = useLoginModal();
 
   if (!cartProducts || cartProducts.length === 0) {
     return (
@@ -61,7 +72,13 @@ const CartClient = () => {
           <p className="text-slate-500">
             Taxes et livraison calculés à l'étape suivante
           </p>
-          <Button label="Valider mon panier" onClick={() => {}} />
+          <Button
+            label={currentUser ? "Passer au paiement" : "Connectez vous"}
+            outline={currentUser ? false : true}
+            onClick={() => {
+              currentUser ? router.push("/checkout") : loginModal.onOpen();
+            }}
+          />
           <Link
             href={"/"}
             className="

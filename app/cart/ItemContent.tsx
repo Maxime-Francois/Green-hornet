@@ -5,7 +5,7 @@ import { formatPrice } from "../utils/formatPrice";
 import Image from "next/image";
 import SetQuantity from "../components/products/SetQuantity";
 import { useCart } from "../hooks/useCart";
-import { it } from "node:test";
+
 
 interface ItemContentProps {
   item: CartProductType;

@@ -26,6 +26,7 @@ export type CartProductType = {
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
+  
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
@@ -79,6 +80,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           src={product.cover}
           alt={product.name}
           className="w-full mb-4 rounded-lg"
+          width={500} // Remplacez cette valeur par la largeur réelle de votre image en pixels
+          height={500}
         />
       </div>
       <div className="flex flex-col gap-1 text-neutral-500 text-sm">
@@ -92,7 +95,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         </div>
         <div className="flex flex-col gap-3">
           <h3>Choisissez la quantité :</h3>
-          <GramPrice defaultGrams={2} />{" "}
+          <GramPrice product={product} />
           {/* Le bouton 2g est sélectionné par défaut */}
         </div>
         <SetQuantity

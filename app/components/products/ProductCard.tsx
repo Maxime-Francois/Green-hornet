@@ -27,12 +27,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             src={product.cover}
             alt={product.name}
             className="object-cover w-full h-40 mb-4 rounded-lg"
+            width={400} // Remplacez cette valeur par la largeur réelle de votre image en pixels
+            height={400}
           />
           <h2 className="text-lg font-semibold mb-2">{product.name}</h2>
           <p className="text-gray-600 mb-2">{product.category}</p>
           <Rating value={product.rating} />
           <p className="text-gray-600 mb-2">{formatPrice(product.price)}</p>
-         
+
           {/* Ajoutez ici d'autres informations du produit si nécessaire */}
         </div>
       </Link>

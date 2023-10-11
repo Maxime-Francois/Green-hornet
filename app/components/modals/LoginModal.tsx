@@ -3,7 +3,6 @@
 import { signIn } from 'next-auth/react'
 import axios from 'axios';
 import { FcGoogle } from "react-icons/fc";
-import { BsFacebook } from "react-icons/bs";
 import { useCallback, useState } from 'react';
 import { FieldValues,SubmitHandler,useForm} from 'react-hook-form';
 
@@ -95,12 +94,7 @@ const LoginModal = () => {
             icon={FcGoogle}
             onClick={() => signIn('google')}
             />
-            {/* <Button 
-            outline
-            label= "Connexion avec Facebook "
-            icon={BsFacebook}
-            onClick={() => {}}
-            /> */}
+          
             <div className='
             text-neutral-500
             text-center
