@@ -93,16 +93,13 @@ type CartProductType {
   quantity    Int
 }
 
-// type StaticImageData {
-//   cover String
-// }
-
 type Address {
   city        String
   country     String
   line1       String
   line2       String?
   postal_code String
+  state       String
 }
 
 enum Role {

@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { buffer } from "micro";
 import Stripe from "stripe";
+import { PrismaClient } from "@prisma/client";
 
 
 export const config = {
@@ -8,6 +9,8 @@ export const config = {
     bodyParser: false,
   },
 };
+
+const prisma = new PrismaClient();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2023-08-16",
 });
@@ -47,7 +50,7 @@ export default async function handler(
       console.log("Objet de l'événement charge :", charge);
 
       if (typeof charge.payment_intent === "string") {
-        await prisma?.order.update({
+        await prisma.order.update({
           where: { paymentIntentId: charge.payment_intent },
           data: { status: "complete", address: charge.shipping?.address },
         });

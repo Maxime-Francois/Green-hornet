@@ -17,7 +17,7 @@ const CheckoutClient = () => {
   const { cartProducts, paymentIntent, handleSetPaymentIntent } = useCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [clientSecret, setClientSecret] = useState("");
+  const [clientSecret, setClientSecret] = useState('');
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const loginModal = useLoginModal();
 
@@ -56,6 +56,7 @@ const CheckoutClient = () => {
           toast.error("quelque chose n'a pas marché");
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartProducts, paymentIntent]);
 
   const options: StripeElementsOptions = {

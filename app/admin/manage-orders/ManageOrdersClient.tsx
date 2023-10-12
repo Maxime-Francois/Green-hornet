@@ -57,7 +57,7 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
     {
       field: "paymentStatus",
       headerName: "Statut du paiement",
-      width: 1300,
+      width: 150,
       renderCell: (params) => {
         return (
           <div>
