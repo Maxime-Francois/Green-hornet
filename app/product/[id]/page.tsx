@@ -2,16 +2,17 @@ import ProductDetails from "./ProductDetails";
 import Container from "@/app/components/Container";
 import ListRating from "./ListRating";
 import { products } from "@/app/utils/products";
+import getProductById from "@/app/actions/getProductById";
+import NullData from "@/app/components/NullData";
 
 interface Iprams {
   id: string;
 }
 
-const Product = ({ params }: { params: Iprams }) => {
-  console.log("params", params);
+const Product = async ({ params }: { params: Iprams }) => {
+  const product = await getProductById(params);
 
-  const product = products.find((item) => item.id ===
-  params.id);
+  if(!product) return <NullData title="Ce produit n'existe pas"/>
 
   return (
     <div className="p-8">

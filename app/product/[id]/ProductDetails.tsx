@@ -89,6 +89,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           {product.name}
         </h2>
         <Rating value={product.rating} />
+        <div>{product.category}</div>
         <div>{product.description}</div>
         <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>
           {product.inStock ? "En stock" : "Rupture de stock"}

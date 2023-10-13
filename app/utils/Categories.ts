@@ -7,19 +7,19 @@ import { MdStorefront } from "react-icons/md";
 export const categories = [
  
   {
-    label: "Fleur",
+    label: "fleur",
     icon: FaCannabis,
   },
   {
-    label: "Résine",
+    label: "résine",
     icon: GiStoneBlock,
   },
   {
-    label: "Huile",
+    label: "huile",
     icon: IoIosWater,
   },
   {
-    label: "Accessoires",
+    label: "accessoires",
     icon: BsFillBoxFill,
   },
 

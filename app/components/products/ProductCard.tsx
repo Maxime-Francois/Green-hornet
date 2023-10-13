@@ -1,20 +1,19 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import Rating from './Rating'; 
-import Link from 'next/link';
+import Rating from "./Rating";
+import Link from "next/link";
 import { formatPrice } from "@/app/utils/formatPrice";
 
 interface ProductCardProps {
-    product: {
-   name: string;
-  category: string;
-  id: string;
-  cover: StaticImageData,
-  price: number,
-  rating:number,
-  description:string,
-  inStock:boolean,
-   
+  product: {
+    name: string;
+    category: string;
+    id: string;
+    cover: StaticImageData;
+    price: number;
+    rating: number;
+    description: string;
+    inStock: boolean;
   };
 }
 
