@@ -1,21 +1,26 @@
+export const revalidate = 0;
+
 import getProducts, { IProductParams } from "./actions/getProducts";
 import Banner from "./components/Banner";
 import Container from "./components/Container";
 import NullData from "./components/NullData";
-
+import Category from "./components/navbar/Category";
 import ContainerSlide from "./components/products/ContainerSlide";
 import ProductCard from "./components/products/ProductCard";
-import { products } from "./utils/products";
+
 
 interface HomeProps {
   searchParams: IProductParams;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
+  console.log("searchParams:", searchParams);
   const products = await getProducts(searchParams);
+  console.log("products:", products);
   if (products.length === 0) {
+    console.log("Aucun produit ne correspond.");
     return (
-      <NullData title="Aucun produit ne correspond. Clickez sur tous pour enlever les filtres"></NullData>
+      <NullData title="Aucun produit ne correspond. Clickez sur tous pour enlever les filtres"/>
     );
   }
   function shuffleArray(array: any) {
@@ -33,7 +38,8 @@ export default async function Home({ searchParams }: HomeProps) {
           <ContainerSlide category="résine"/>
           <ContainerSlide category="huile"/> */}
       <Container>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8 mt-8">
+      
+        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 mb-20">
           {shuffledProducts.map((product: any) => {
             return <ProductCard key={product.id} product={product} />;
           })}

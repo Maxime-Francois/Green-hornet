@@ -36,6 +36,7 @@ const AddProductForm = () => {
       cover: null,
       inStock: false,
       price: "",
+      
     },
   });
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -55,6 +56,7 @@ const AddProductForm = () => {
       toast.error("Aucune image n'a été sélectionnée");
       return;
     }
+     reset();
 
     const handleCoverUpload = async () => {
       try {

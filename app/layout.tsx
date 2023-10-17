@@ -25,12 +25,12 @@ export default  async function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true}>
         <CartProvider>
-        <ClientOnly>
+       
           <ToasterProvider/>
           <LoginModal/>
           <RegisterModal/>
           <Navbar currentUser = {currentUser}/>
-        </ClientOnly>
+       
         {children}
         <Footer/>
          </CartProvider>

@@ -1,9 +1,8 @@
 'use client'
 
-import { signIn } from 'next-auth/react'
-import axios from 'axios';
+import { getSession, signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState } from 'react';
+import {  useState } from 'react';
 import { FieldValues,SubmitHandler,useForm} from 'react-hook-form';
 
 import useRegisterModal from '@/app/hooks/useRegisterModal';
@@ -39,23 +38,25 @@ const LoginModal = () => {
     const onSubmit : SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
-        signIn('credentials', {
-            ...data,
-            redirect:false
-        })
-        .then((callback) =>{
-           setIsLoading(false);
+        signIn("credentials", {
+          ...data,
+          redirect: false,
 
-           if (callback?.ok) {
-            toast.success('Logged in');
+        }).then(async (callback) => {
+          setIsLoading(false);
+
+          if (callback?.ok) {
+            const session = await getSession();
+            const userName = session?.user?.name || "Utilisateur";
+            toast.success(`Bienvenue ${userName}`);
             router.refresh();
             LoginModal.onClose();
-           }
+          }
 
-           if (callback?.error) {
-            toast.error(callback.error)
-           }
-        })
+          if (callback?.error) {
+            toast.error(callback.error);
+          }
+        });
     }
 
     const bodyContent = (
@@ -86,38 +87,39 @@ const LoginModal = () => {
     );
 
     const footerContent = (
-        <div className='flex flex-col gap-4 mt-3'>
-            <hr />
-            <Button 
-            outline
-            label= "Connexion avec Google"
-            icon={FcGoogle}
-            onClick={() => signIn('google')}
-            />
-          
-            <div className='
+      <div className="flex flex-col gap-4 mt-3">
+        <hr />
+        <Button
+          outline
+          label="Connexion avec Google"
+          icon={FcGoogle}
+          onClick={() => signIn("google")}
+        />
+
+        <div
+          className="
             text-neutral-500
             text-center
             mt-4
             font-light
-            '>
-                <div className='justify-center flex flex-row items-center gap-2'>
-                    <div>
-                        Vous avez déja un compte ? 
-                    </div>
-                     <div
-                     onClick={RegisterModal.onClose}
-                     className='
+            "
+        >
+          <div className="justify-center flex flex-row items-center gap-2">
+            <div>Vous n&apos;avez pas encore de compte ?</div>
+            <div
+              onClick={RegisterModal.onClose}
+              className="
                      text-neutral-800
                      cursor-pointer
                      hover:underline
-                     '>
-                       Connexion
-                    </div>
-                </div>
+                     "
+            >
+              Créez votre compte
             </div>
+          </div>
         </div>
-    )
+      </div>
+    );
 
   return (
     <Modal

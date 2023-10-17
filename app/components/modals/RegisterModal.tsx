@@ -47,7 +47,7 @@ const RegisterModal = () => {
             RegisterModal.onClose();
         })
         .catch((error) => {
-            toast.error('something went wrong')
+            toast.error("quelque chose n'a pas marché ")
         })
         .finally(() => {
             setIsLoading(false);

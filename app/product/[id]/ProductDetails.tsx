@@ -1,6 +1,6 @@
 "use client";
 
-import Rating from "@/app/components/products/Rating";
+
 import Image, { StaticImageData } from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import GramPrice from "./GramPrice";
@@ -9,6 +9,7 @@ import Button from "@/app/components/products/Button";
 import { useCart } from "@/app/hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { Rating } from "@mui/material";
 
 interface ProductDetailsProps {
   product: any;
@@ -23,6 +24,7 @@ export type CartProductType = {
   rating: number;
   description: string;
   quantity: number;
+  
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
@@ -73,6 +75,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     });
   }, [cartProduct]);
 
+   const productRating =
+     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
+     product.reviews.length;
+
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-16">
       <div>
@@ -88,7 +94,11 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <h2 className="text-3xl font-medium text-neutral-700 pb-2">
           {product.name}
         </h2>
-        <Rating value={product.rating} />
+        <div className="flex items-center">
+          <Rating value={productRating}readOnly/>
+        <div>{product.reviews.length} avis</div>
+        </div>
+        
         <div>{product.category}</div>
         <div>{product.description}</div>
         <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>

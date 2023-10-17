@@ -19,6 +19,10 @@ module.exports = {
         weedColor: "#10ad2b",
         oilColor: "#5b59ea",
       },
+      ringColor: {
+        transparent: "transparent",
+        weedColor: "#10ad2b",
+      },
     },
   },
   plugins: [require("flowbite/plugin")],

@@ -2,22 +2,22 @@
 
 import React from 'react';
 import Slideshow from '../Slideshow';
-import { products } from '../../utils/products';
 import { Button } from '@material-tailwind/react';
 
 interface ContainerSlideProps {
   category: string;
+  products: any[];
 }
 
-const ContainerSlide: React.FC<ContainerSlideProps> = ({ category }) => {
+const ContainerSlide: React.FC<ContainerSlideProps> = ({ category, products }) => {
   const filteredProducts = products.filter((product) => product.category === category);
 
     let containerClass = "";
-    if (category === "fleur") {
+    if (category === "Fleurs") {
       containerClass = "bg-weedColor";
-    } else if (category === "résine") {
+    } else if (category === "Résines") {
       containerClass = "bg-shitColor";
-    } else if (category === "huile") {
+    } else if (category === "Huiles") {
       containerClass = "bg-oilColor";
     }
 

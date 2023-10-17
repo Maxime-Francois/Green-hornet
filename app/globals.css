@@ -50,6 +50,11 @@ body,
   overflow: hidden;
 }
 
+:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 /* responsive  */
 
 @media (min-width: 999px) {

@@ -17,7 +17,9 @@ export async function POST(request: Request) {
       category,
       cover,
       inStock,
+      
       price: parseFloat(price),
+      
     },
   });
 

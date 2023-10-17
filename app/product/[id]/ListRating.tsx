@@ -2,7 +2,8 @@
 
 import moment from "moment";
 import Heading from "./Heading";
-import Rating from "@/app/components/products/Rating";
+import { Rating } from "@mui/material";
+
 
 interface ListRatingProps {
     product:any;
@@ -11,6 +12,7 @@ interface ListRatingProps {
 const ListRating: React.FC<ListRatingProps> = ({
     product
 }) => {
+    if(product.reviews.length === 0) return null
   return (
     <div>
         <Heading title="Avis produit"/>
@@ -26,7 +28,7 @@ const ListRating: React.FC<ListRatingProps> = ({
                     fromNow()}</div>
                 </div>
                 <div className="mt-2">
-                  <Rating value={review.rating}/> 
+                 <Rating value={review.rating}/>
                   <div className="ml-2">{review.comment}</div>  
                   <hr className="mt-4 mb-4" />   
                 </div>

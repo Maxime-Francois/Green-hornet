@@ -19,7 +19,7 @@ const AdminNav = () => {
         <div className="flex flex-row items-center justify-between md:justify-center gap-8 md:gap-12 overflow-x-auto flex-nowrap">
           <Link href="/admin">
             <AdminNavItem
-              label="summary"
+              label="Résumé"
               icon={MdDashboard}
               selected={pathname === "/admin"}
             />

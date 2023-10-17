@@ -29,7 +29,7 @@ const OrderDetails: React.FC<OrderDetailsProps> = ({ order }) => {
         <div>
           {order.status === "pending" ? (
             <Status
-              text="pending"
+              text="En attente"
               icon={MdAccessTimeFilled}
               bg="bg-slate-200"
               color="text-slate-700"

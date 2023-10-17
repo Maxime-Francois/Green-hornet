@@ -88,7 +88,6 @@ type CartProductType {
   category    String
   cover       String
   price       Float
-  rating      Int
   description String
   quantity    Int
 }

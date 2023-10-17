@@ -1,4 +1,6 @@
 
+'use client'
+
 import { useSearchParams } from "next/dist/client/components/navigation";
 import { useRouter } from "next/navigation";
 import queryString from "query-string";
@@ -44,14 +46,21 @@ const Category:React.FC<CategoryProps> = ({label, icon: Icon, selected}) => {
 
 
   return (
-    <div onClick={handleClick}className={`flex items-center justify-center text-center
-    gap-1 p-2 border-b-2 hover:text-slate-800 transition cursor-pointer
-    ${selected ? 'border-b-800 text-slate-800'  : 'border-transparent text-slate-500'}
-    `}>
-        <Icon size={20}/>
-        <div className="font-medium text-sm ">{label}</div>
+    <div
+      onClick={handleClick}
+      className={`flex items-center lg:justify-center text-center
+    gap-1 p-2 border-b-2 md:hover:text-green-400 transition cursor-pointer md:flex-row md:justify-start md:w-full hover:bg-gray-100 hover:bg-transparent border-0
+    ${
+      selected
+        ? "border-green-400 text-green-400"
+        : "border-transparent text-b-400"
+    }
+    `}
+    >
+      <Icon size={20} />
+      <div className="font-normal text-xl ">{label}</div>
     </div>
-  )
+  );
 }
 
 export default Category

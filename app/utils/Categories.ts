@@ -2,24 +2,24 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { FaCannabis } from "react-icons/fa";
 import { GiStoneBlock } from "react-icons/gi";
 import { IoIosWater } from "react-icons/io";
-import { MdStorefront } from "react-icons/md";
+
 
 export const categories = [
  
   {
-    label: "fleur",
+    label: "Fleurs",
     icon: FaCannabis,
   },
   {
-    label: "résine",
+    label: "Résines",
     icon: GiStoneBlock,
   },
   {
-    label: "huile",
+    label: "Huiles",
     icon: IoIosWater,
   },
   {
-    label: "accessoires",
+    label: "Accessoires",
     icon: BsFillBoxFill,
   },
 

@@ -5,8 +5,8 @@ import Image from 'next/image';
 const Banner: React.FC = () => {
   const [activeItem, setActiveItem] = useState(0);
   const carouselItems = [
-    '/images/carousel/banner1.jpg',
-    '/images/carousel/banner2.jpg',
+    "/images/carousel/Halloweed.png",
+   
   ];
 
   const handlePrevClick = () => {
@@ -31,7 +31,7 @@ const Banner: React.FC = () => {
   return (
     <div id="default-carousel" className="relative w-full" data-carousel="slide">
       {/* Carousel wrapper */}
-      <div className="relative h-96 overflow-hidden md:h-96">
+      <div className="relative h-full overflow-hidden md:h-[500px]">
         {carouselItems.map((item, index) => (
           <div
             key={index}
@@ -43,8 +43,8 @@ const Banner: React.FC = () => {
             <Image
               src={item}
               alt={`Slide ${index + 1}`}
-              layout="fill"
-              objectFit="cover"
+              fill
+              
             />
           </div>
         ))}
