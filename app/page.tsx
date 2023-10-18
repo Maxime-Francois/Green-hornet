@@ -1,5 +1,4 @@
 export const revalidate = 0;
-
 import getProducts, { IProductParams } from "./actions/getProducts";
 import Banner from "./components/Banner";
 import Container from "./components/Container";
@@ -34,17 +33,12 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <div>
       <Banner />
-      {/* <ContainerSlide category="fleur"/>
-          <ContainerSlide category="résine"/>
-          <ContainerSlide category="huile"/> */}
-      <Container>
+
+      <ContainerSlide categories={["Fleurs"]} products={shuffledProducts} />
+      <ContainerSlide categories={["Résines"]} products={shuffledProducts} />
+      <ContainerSlide categories={["Huiles"]} products={shuffledProducts} />
+    
       
-        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 mb-20">
-          {shuffledProducts.map((product: any) => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
-        </div>
-      </Container>
     </div>
   );
 }

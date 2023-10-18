@@ -33,7 +33,7 @@ const Category:React.FC<CategoryProps> = ({label, icon: Icon, selected}) => {
 
             const url = queryString.stringifyUrl (
                 {
-                    url: '/',
+                    url: '/products',
                     query: updatedQuery
                 },
                 {

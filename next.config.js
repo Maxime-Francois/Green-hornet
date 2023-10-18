@@ -4,5 +4,6 @@ module.exports = {
     domains: ["firebasestorage.googleapis.com",
      "i.ibb.co"],
   },
+  
 };
 

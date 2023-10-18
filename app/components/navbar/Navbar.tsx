@@ -13,11 +13,13 @@ import Link from "next/link";
 import CartCount from "./CartCount";
 import Categories from "./Categories";
 import SearchBar from "./SearchBar";
+import { Kanit } from "next/font/google";
 
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
+ const kanit = Kanit({ subsets: ["latin"] , weight:'500'});
 
 const router = useRouter;
 
@@ -47,6 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
     const toggleSearchBar = () => {
       setSearchBarVisible(!isSearchBarVisible);
     };
+   
 
   return (
     <div>

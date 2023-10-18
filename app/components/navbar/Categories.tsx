@@ -1,11 +1,13 @@
-'use client'
 import { categories } from "@/app/utils/Categories";
+import Container from "../Container";
 import Category from "./Category";
 import { usePathname, useSearchParams } from "next/navigation";
 
 const Categories = () => {
   const params = useSearchParams();
   const category = params?.get("category");
+  const pathname = usePathname();
+
 
 
 

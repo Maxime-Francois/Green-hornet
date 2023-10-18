@@ -1,5 +1,5 @@
 import  Navbar  from "./components/navbar/Navbar"
-import {Nunito} from "next/font/google"
+import { Kanit } from "next/font/google"
 import './globals.css'
 import Footer from "./components/Footer"
 import ClientOnly from "./components/ClientOnly"
@@ -8,11 +8,19 @@ import ToasterProvider from "./providers/ToasterProvider"
 import LoginModal from "./components/modals/LoginModal"
 import getCurrentUser from "./actions/getCurrentUser"
 import CartProvider from "./providers/CartProvider"
+import { Metadata } from "next"
 
-export const metadata = {
-  title: 'GREEN HORNET CBD',
-  description: 'CBD SHOP',
-}
+
+export const metadata: Metadata = {
+  title: "GREEN HORNET CBD",
+  description: "CBD SHOP",
+  icons: {
+    icon:['favicon/favicon.ico?v=4'],
+    apple: ['favicon/apple-touch-icon.png?v=4'],
+    shortcut: ['favicon/apple-touch-icon.png']
+  }
+  
+};
 
 export default  async function RootLayout({
   children,
@@ -25,12 +33,10 @@ export default  async function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true}>
         <CartProvider>
-       
           <ToasterProvider/>
           <LoginModal/>
           <RegisterModal/>
           <Navbar currentUser = {currentUser}/>
-       
         {children}
         <Footer/>
          </CartProvider>
