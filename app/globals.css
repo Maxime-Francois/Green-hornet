@@ -6,6 +6,7 @@ html,
 body,
 :root{
   height: 100%;
+
 }
 .title-slider {
   padding: 0px 16px 25px;
@@ -50,10 +51,67 @@ body,
   overflow: hidden;
 }
 
+
 :focus {
   outline: none !important;
   box-shadow: none !important;
 }
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 30px !important;
+  line-height: 1;
+  opacity: .75;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgb(16 173 43 /1) !important;
+}
+.slick-prev,
+.slick-next {
+  width: auto !important;
+}
+.slick-prev {
+  left: -30px !important;
+}
+.slick-next {
+  right: -30px !important;
+}
+.products .product {
+  width: 200px;
+}
+.card{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.title-slider {
+  padding: 0px 16px 0px;
+}
+
+.band{
+  background: rgba(0, 0, 0, 0.9);
+
+}
+.btn:hover{
+  background: transparent !important;
+}
+
+.iconBand {
+  background-image:
+    /* top, transparent red */
+    linear-gradient(rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)),
+    /* your image */
+    url(../public//images/cbd-farm.jpg);
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      padding: 50px 0px 100px;
+      margin-top: 30px;
+
+}
+
 
 /* responsive  */
 

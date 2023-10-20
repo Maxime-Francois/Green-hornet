@@ -24,7 +24,7 @@ interface NavbarProps {
 const router = useRouter;
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  console.log({ currentUser });
+  
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isDropdownOpen, setDropdownOpen] = useState(false);

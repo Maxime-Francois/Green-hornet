@@ -47,6 +47,12 @@ const Slideshow: React.FC<SlideshowProps> = ({ productData }) => {
       {
         breakpoint: 768, // un autre point de rupture pour les résolutions plus petites
         settings: {
+          slidesToShow: 2, // ajustez le nombre de diapositives pour une résolution plus petite
+        },
+      },
+      {
+        breakpoint: 540, // un autre point de rupture pour les résolutions plus petites
+        settings: {
           slidesToShow: 1, // ajustez le nombre de diapositives pour une résolution plus petite
         },
       },
@@ -56,7 +62,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ productData }) => {
   return (
     <Slider {...settings}>
       {productData.map((product) => (
-        <div key={product.id} className="px-3 shadow-xl">
+        <div key={product.id} className="px-4 my-8 overflow-x-clip">
           <ProductCard product={product} />
         </div>
       ))}

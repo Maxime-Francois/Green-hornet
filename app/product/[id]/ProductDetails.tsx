@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image, { StaticImageData } from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import GramPrice from "./GramPrice";
@@ -24,11 +23,9 @@ export type CartProductType = {
   rating: number;
   description: string;
   quantity: number;
-  
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
-  
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
@@ -42,7 +39,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     quantity: 1,
   });
   const router = useRouter();
-  console.log(cartProducts);
+ 
 
   useEffect(() => {
     setIsProductInCart(false);
@@ -75,9 +72,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     });
   }, [cartProduct]);
 
-   const productRating =
-     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
-     product.reviews.length;
+  const productRating =
+    product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
+    product.reviews.length;
 
   return (
     <div className=" grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -95,10 +92,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           {product.name}
         </h2>
         <div className="flex items-center">
-          <Rating value={productRating}readOnly/>
-        <div>{product.reviews.length} avis</div>
+          <Rating value={productRating} readOnly />
+          <div>{product.reviews.length} avis</div>
         </div>
-        
+
         <div>{product.category}</div>
         <div>{product.description}</div>
         <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>

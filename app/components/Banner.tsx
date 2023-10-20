@@ -44,6 +44,7 @@ const Banner: React.FC = () => {
               src={item}
               alt={`Slide ${index + 1}`}
               fill
+              objectFit='cover'
               
             />
           </div>

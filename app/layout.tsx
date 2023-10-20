@@ -10,6 +10,8 @@ import getCurrentUser from "./actions/getCurrentUser"
 import CartProvider from "./providers/CartProvider"
 import { Metadata } from "next"
 
+const kanit = Kanit({subsets: ['latin'], weight:["400"]})
+
 
 export const metadata: Metadata = {
   title: "GREEN HORNET CBD",
@@ -31,7 +33,7 @@ export default  async function RootLayout({
 
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className={kanit.className}>
         <CartProvider>
           <ToasterProvider/>
           <LoginModal/>

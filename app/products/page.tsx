@@ -12,6 +12,9 @@ export default async function Products({ searchParams }: ProductProps) {
   console.log("searchParams:", searchParams);
   const products = await getProducts(searchParams);
   console.log("products:", products);
+
+  const category = searchParams.category;
+
   if (products.length === 0) {
     console.log("Aucun produit ne correspond.");
     return (
@@ -27,9 +30,13 @@ export default async function Products({ searchParams }: ProductProps) {
   }
   const shuffledProducts = shuffleArray(products);
   return (
-    <div>
+    <div className="mt-8 products">
       <Container>
-        <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 mb-20">
+        <h2 className="text-2xl  tracking-wider pb-5 title-slider mt-16">
+          {category && category.toUpperCase()} CBD
+        </h2>
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3  md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mt-8 mb-20"> */}
+        <div className="flex flex-wrap gap-7  mb-20 center mt-10">
           {shuffledProducts.map((product: any) => {
             return <ProductCard key={product.id} product={product} />;
           })}

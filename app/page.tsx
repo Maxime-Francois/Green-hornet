@@ -1,7 +1,9 @@
 export const revalidate = 0;
 import getProducts, { IProductParams } from "./actions/getProducts";
+import Band from "./components/Band";
 import Banner from "./components/Banner";
 import Container from "./components/Container";
+import IconBand from "./components/IconBand";
 import NullData from "./components/NullData";
 import Category from "./components/navbar/Category";
 import ContainerSlide from "./components/products/ContainerSlide";
@@ -35,8 +37,11 @@ export default async function Home({ searchParams }: HomeProps) {
       <Banner />
 
       <ContainerSlide categories={["Fleurs"]} products={shuffledProducts} />
+      <Band/>
       <ContainerSlide categories={["Résines"]} products={shuffledProducts} />
+      <IconBand/>
       <ContainerSlide categories={["Huiles"]} products={shuffledProducts} />
+
     
       
     </div>

@@ -24,7 +24,7 @@ const SearchBar = () => {
 
     const url = queryString.stringifyUrl(
       {
-        url: "/",
+        url: "/products",
         query: {
           searchTerm: data.searchTerm,
         },

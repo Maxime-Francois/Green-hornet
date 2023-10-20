@@ -29,31 +29,32 @@ const ContainerSlide: React.FC<ContainerSlideProps> = ({
             (product) => product.category === category
           );
 
-          let containerClass = "";
-          if (category === "Fleurs") {
-            containerClass = "bg-weedColor";
-          } else if (category === "Résines") {
-            containerClass = "bg-shitColor";
-          } else if (category === "Huiles") {
-            containerClass = "bg-oilColor";
-          }
+          // let containerClass = "";
+          // if (category === "Fleurs") {
+          //   containerClass = "bg-weedColor";
+          // } else if (category === "Résines") {
+          //   containerClass = "bg-shitColor";
+          // } else if (category === "Huiles") {
+          //   containerClass = "bg-oilColor";
+          // }
 
           return (
             <div
               key={category}
-              className={`flex justify-center flex-col ${containerClass} border rounded-xl shadow-xl container-product-slider`}
+              className={`flex justify-center flex-col  rounded-xl  container-product-slider`}
             >
               <div className="flex justify-center flex-col p-8">
-                <h3 className="text-2xl font-sans tracking-wider text-white pb-5 title-slider">
+                <h2 className="text-2xl  tracking-wider text-b pb-5 title-slider ">
                   {category.toUpperCase()} CBD
-                </h3>
+                </h2>
+             
 
                 <Slideshow productData={filteredProducts} />
 
-                <div className="flex justify-center mt-8">
+                <div className="flex justify-center mt-5">
                   <Button
                     onClick={() => redirectToCategoryPage(category)}
-                    className="bg-white text-black hover:shadow-xl ease-in-out duration-300 hover:scale-110"
+                    className="bg-weedColor text-white hover:shadow-xl hover:border-solid border-2 border-weedColor hover:bg-weedColor hover:text-white ease-in-out duration-300 hover:scale-110 "
                   >
                     VOIR TOUTE LA COLLECTION
                   </Button>

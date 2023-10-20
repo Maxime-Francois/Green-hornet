@@ -56,7 +56,7 @@ const AddProductForm = () => {
       toast.error("Aucune image n'a été sélectionnée");
       return;
     }
-     reset();
+     
 
     const handleCoverUpload = async () => {
       try {
@@ -124,6 +124,7 @@ const AddProductForm = () => {
     };
 
     await handleCoverUpload();
+    reset();
   };
 
   const category = watch("category");

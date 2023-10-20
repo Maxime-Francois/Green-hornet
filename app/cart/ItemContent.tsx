@@ -6,14 +6,16 @@ import Image from "next/image";
 import SetQuantity from "../components/products/SetQuantity";
 import { useCart } from "../hooks/useCart";
 
-
 interface ItemContentProps {
   item: CartProductType;
 }
 
-const ItemContent: React.FC<ItemContentProps> = ({
-     item }) => {
-        const {handleRemoveProductFromCart, handleCartQtyIncrease, handleCartQtyDecrease} = useCart()
+const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
+  const {
+    handleRemoveProductFromCart,
+    handleCartQtyIncrease,
+    handleCartQtyDecrease,
+  } = useCart();
   return (
     <div
       className="
@@ -42,7 +44,8 @@ const ItemContent: React.FC<ItemContentProps> = ({
             <Image
               src={item.cover}
               alt={item.name}
-              fill
+              width={70} // Remplacez cette valeur par la largeur réelle de votre image en pixels
+              height={70}
               className="object-contain"
             />
           </div>
@@ -50,9 +53,10 @@ const ItemContent: React.FC<ItemContentProps> = ({
         <div className="flex flex-col justify-between">
           <Link href={`/product/${item.id}`}>{item.name}</Link>
           <div className="w-[70px]">
-            <button className="text-slate-500 underline" onClick={() => 
-                handleRemoveProductFromCart(item)
-                }>
+            <button
+              className="text-slate-500 underline"
+              onClick={() => handleRemoveProductFromCart(item)}
+            >
               supprimer
             </button>
           </div>
@@ -63,8 +67,12 @@ const ItemContent: React.FC<ItemContentProps> = ({
         <SetQuantity
           cartCounter={true}
           cartProduct={item}
-          handleQtyIncrease={() => {handleCartQtyIncrease(item)}}
-          handleQtyDecrease={() => {handleCartQtyDecrease(item)}}
+          handleQtyIncrease={() => {
+            handleCartQtyIncrease(item);
+          }}
+          handleQtyDecrease={() => {
+            handleCartQtyDecrease(item);
+          }}
         />
       </div>
       <div className="justify-self-end font-semibold">
