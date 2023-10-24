@@ -77,9 +77,9 @@ body,
 .slick-next {
   right: -30px !important;
 }
-.products .product {
-  width: 200px;
-}
+/* .products .product {
+  width: 250px;
+} */
 .card{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

@@ -1,14 +1,15 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import GramPrice from "./GramPrice";
 import SetQuantity from "@/app/components/products/SetQuantity";
 import Button from "@/app/components/products/Button";
 import { useCart } from "@/app/hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
-import { useRouter } from "next/navigation";
+
 import { Rating } from "@mui/material";
+import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ProductDetailsProps {
   product: any;
@@ -39,8 +40,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     quantity: 1,
   });
   const router = useRouter();
- 
-
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
@@ -51,7 +50,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+  }, [cartProducts, product.id]);
 
   const handleQtyIncrease = useCallback(() => {
     if (cartProduct.quantity === 99) {
@@ -62,6 +61,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       return { ...prev, quantity: ++prev.quantity };
     });
   }, [cartProduct]);
+
   const handleQtyDecrease = useCallback(() => {
     if (cartProduct.quantity === 1) {
       return;
@@ -77,13 +77,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     product.reviews.length;
 
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
       <div>
         <Image
           src={product.cover}
           alt={product.name}
           className="w-full mb-4 rounded-lg"
-          width={500} // Remplacez cette valeur par la largeur réelle de votre image en pixels
+          width={500}
           height={500}
         />
       </div>
@@ -91,7 +91,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <h2 className="text-3xl font-medium text-neutral-700 pb-2">
           {product.name}
         </h2>
-        <div className="flex items-center">
+        <div className="flex items-center gap-2">
           <Rating value={productRating} readOnly />
           <div>{product.reviews.length} avis</div>
         </div>
@@ -104,7 +104,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <div className="flex flex-col gap-3">
           <h3>Choisissez la quantité :</h3>
           <GramPrice product={product} />
-          {/* Le bouton 2g est sélectionné par défaut */}
         </div>
         <SetQuantity
           cartProduct={cartProduct}

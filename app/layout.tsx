@@ -34,8 +34,8 @@ export default  async function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true} className={kanit.className}>
-        <CartProvider>
-          <ToasterProvider/>
+          <ToasterProvider/> 
+          <CartProvider>
           <LoginModal/>
           <RegisterModal/>
           <Navbar currentUser = {currentUser}/>

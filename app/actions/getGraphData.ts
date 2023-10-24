@@ -30,7 +30,7 @@ export default async function getGraphData() {
 
       aggregatedData[day] = {
         day,
-        date: currentDate.format("DD-MM-YYYY"),
+        date: currentDate.format("MM-DD-YYYY"),
         totalAmount: 0,
       };
       currentDate.add(1, "day");

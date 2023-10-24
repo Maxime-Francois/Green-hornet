@@ -17,7 +17,7 @@ const IconBand = () => {
       <Container>
         <div className="flex flex-col gap-10 items-center">
           <h2 className="text-2xl text-white">NOS SERVICES</h2>
-          <div className="flex item-start gap-14">
+          <div className="flex item-start gap-8 justify-center flex-wrap">
             <div
               className="flex flex-col items-center w-[350px] gap-4 bg-weedColor p-7 rounded-xl"
               data-aos="fade-up"
@@ -37,7 +37,7 @@ const IconBand = () => {
               className="flex flex-col items-center w-[350px] gap-4 bg-weedColor p-7 rounded-xl"
               data-aos="fade-up"
               data-aos-offset="300"
-              data-aos-duration="1300"
+              data-aos-duration="1700"
             >
               <RiSecurePaymentLine size={50} color="white" />
               <h3 className="text-xl text-white">Paiement sécurisé</h3>
@@ -51,7 +51,7 @@ const IconBand = () => {
               className="flex flex-col items-center w-[350px] gap-4 bg-weedColor p-7 rounded-xl"
               data-aos="fade-up"
               data-aos-offset="300"
-              data-aos-duration="1300"
+              data-aos-duration="1900"
             >
               <TbTruckDelivery size={50} color="white" />
               <h3 className="text-xl text-white">Livraison Gratuite</h3>

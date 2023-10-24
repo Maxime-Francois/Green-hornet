@@ -1,12 +1,12 @@
-"use client";
-import {
+'use client'
+import React, {
   createContext,
   useCallback,
   useContext,
   useEffect,
   useState,
 } from "react";
-import { CartProductType } from "../product/[id]/ProductDetails";
+import { CartProductType } from "@/app/product/[id]/ProductDetails";
 import { toast } from "react-hot-toast";
 
 type CartContextType = {
@@ -24,16 +24,18 @@ type CartContextType = {
 
 export const CartContext = createContext<CartContextType | null>(null);
 
-interface Props {
-  [propName: string]: any;
-}
-export const CartContextProvider = (props: Props) => {
+export const CartContextProvider: React.FC = (props) => {
   const [cartTotalQty, setCartTotalQty] = useState(0);
   const [cartTotalAmount, setCartTotalAmount] = useState(0);
   const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(
     null
   );
   const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
+  const [addedProduct, setAddedProduct] = useState<CartProductType | null>(
+    null
+  );
+
+
 
   useEffect(() => {
     const cartItems: any = localStorage.getItem("eShopCartItems");
@@ -48,7 +50,7 @@ export const CartContextProvider = (props: Props) => {
   useEffect(() => {
     const getTotals = () => {
       if (cartProducts) {
-        const { total, qty } = cartProducts?.reduce(
+        const { total, qty } = cartProducts.reduce(
           (acc, item) => {
             const itemTotal = item.price * item.quantity;
             acc.total += itemTotal;
@@ -77,11 +79,24 @@ export const CartContextProvider = (props: Props) => {
       } else {
         updatedCart = [product];
       }
-      toast.success("Produit ajouté au panier");
+
+     
       localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
+
+       setAddedProduct(product);
+      
       return updatedCart;
     });
-  }, []);
+  }, [cartProducts]);
+
+useEffect(() => {
+  // Cette partie du code sera exécutée après chaque mise à jour de cartProducts
+  if (cartProducts && addedProduct) {
+    toast.success("Produit ajouté au panier");
+    // Réinitialisez l'état du produit ajouté pour éviter d'afficher le toast à nouveau
+    setAddedProduct(null);
+  }
+}, [cartProducts, addedProduct]);
 
   const handleRemoveProductFromCart = useCallback(
     (product: CartProductType) => {
@@ -152,14 +167,12 @@ export const CartContextProvider = (props: Props) => {
     setCartProducts(null);
     setCartTotalQty(0);
     localStorage.setItem("eShopCartItems", JSON.stringify(null));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartProducts]);
+  }, []);
 
   const handleSetPaymentIntent = useCallback(
     (val: string | null) => {
       setPaymentIntent(val);
       localStorage.setItem("eShopPaymentIntent", JSON.stringify(val));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
     [paymentIntent]
   );
@@ -176,6 +189,7 @@ export const CartContextProvider = (props: Props) => {
     handleSetPaymentIntent,
     paymentIntent,
   };
+
   return <CartContext.Provider value={value} {...props} />;
 };
 
