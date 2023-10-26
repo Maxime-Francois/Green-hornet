@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 
 interface ProductDetailsProps {
   product: any;
+  
 }
 
 export type CartProductType = {
@@ -24,11 +25,16 @@ export type CartProductType = {
   rating: number;
   description: string;
   quantity: number;
+  selectedGrams: number;
+  grams: number;
+  totalPrice: number;
+  
 };
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const { handleAddProductToCart, cartProducts } = useCart();
   const [isProductInCart, setIsProductInCart] = useState(false);
+  const [selectedGrams, setSelectedGrams] = useState(2);
   const [cartProduct, setCartProduct] = useState<CartProductType>({
     id: product.id,
     name: product.name,
@@ -38,8 +44,21 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     rating: product.rating,
     description: product.description,
     quantity: 1,
+    selectedGrams: selectedGrams,
+    grams: selectedGrams,
+    totalPrice:0,
+   
   });
+  const [totalPrice, setTotalPrice] = useState(0);
   const router = useRouter();
+
+  // Fonction pour mettre à jour le prix total
+  const handleTotalPriceChange = (totalPrice: number) => {
+    setTotalPrice(totalPrice);
+  };
+  const handleGramChange = (grams: number) => {
+    setSelectedGrams(grams);
+  };
   useEffect(() => {
     setIsProductInCart(false);
     if (cartProducts) {
@@ -75,6 +94,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
   const productRating =
     product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) /
     product.reviews.length;
+    console.log(totalPrice)
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -96,15 +116,33 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           <div>{product.reviews.length} avis</div>
         </div>
 
-        <div>{product.category}</div>
+        <div></div>
         <div>{product.description}</div>
         <div className={product.inStock ? "text-teal-400" : "text-rose-400"}>
           {product.inStock ? "En stock" : "Rupture de stock"}
         </div>
-        <div className="flex flex-col gap-3">
-          <h3>Choisissez la quantité :</h3>
-          <GramPrice product={product} />
-        </div>
+
+        {/* affichage du prix normal pour les catégories Accessoires et Huiles  */}
+
+        {product.category === "Accessoires" || product.category === "Huiles" ? (
+          <div>
+            <p className="font-bold text-xl text-neutral-700">
+              {product.price.toFixed(2)} €
+            </p>
+          </div>
+        ) : (
+          // affichage du prix au gramme pour les autres catégories
+          <div className="flex flex-col gap-3">
+            <h3>Choisissez la quantité :</h3>
+            <GramPrice
+              product={product}
+              onGramChange={handleGramChange}
+              selectedGrams={selectedGrams}
+              onTotalPriceChange={handleTotalPriceChange}
+            />
+          </div>
+        )}
+
         <SetQuantity
           cartProduct={cartProduct}
           handleQtyIncrease={handleQtyIncrease}
@@ -113,7 +151,15 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         <div className="pt-4 max-w-[300px]">
           <Button
             label="Ajouter au panier"
-            onClick={() => handleAddProductToCart(cartProduct)}
+            onClick={() => {
+              const productToAdd = {
+                ...cartProduct,
+                selectedGrams: selectedGrams, // Mettez à jour les grammes sélectionnés
+                grams: selectedGrams,
+                totalPrice: totalPrice, // Mettez à jour les grammes
+              };
+              handleAddProductToCart(productToAdd);
+            }}
           />
           {isProductInCart ? (
             <>

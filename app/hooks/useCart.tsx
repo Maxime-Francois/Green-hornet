@@ -20,6 +20,8 @@ type CartContextType = {
   handleClearCart: () => void;
   paymentIntent: string | null;
   handleSetPaymentIntent: (val: string | null) => void;
+  selectedGrams: number;
+  handleSetSelectedGrams: (grams: number) => void;
 };
 
 export const CartContext = createContext<CartContextType | null>(null);
@@ -34,7 +36,10 @@ export const CartContextProvider: React.FC = (props) => {
   const [addedProduct, setAddedProduct] = useState<CartProductType | null>(
     null
   );
-
+  const [selectedGrams, setSelectedGrams] = useState(2);
+const handleSetSelectedGrams = (grams: number) => {
+  setSelectedGrams(grams);
+};
 
 
   useEffect(() => {
@@ -52,7 +57,7 @@ export const CartContextProvider: React.FC = (props) => {
       if (cartProducts) {
         const { total, qty } = cartProducts.reduce(
           (acc, item) => {
-            const itemTotal = item.price * item.quantity;
+            const itemTotal = item.totalPrice * item.quantity;
             acc.total += itemTotal;
             acc.qty += item.quantity;
 
@@ -98,22 +103,33 @@ useEffect(() => {
   }
 }, [cartProducts, addedProduct]);
 
-  const handleRemoveProductFromCart = useCallback(
-    (product: CartProductType) => {
-      if (cartProducts) {
-        const filteredProducts = cartProducts.filter((item) => {
-          return item.id !== product.id;
-        });
-        setCartProducts(filteredProducts);
-        toast.success("Produit supprimé du panier");
-        localStorage.setItem(
-          "eShopCartItems",
-          JSON.stringify(filteredProducts)
-        );
-      }
-    },
-    [cartProducts]
-  );
+ const handleRemoveProductFromCart = useCallback(
+   (product: CartProductType) => {
+     if (cartProducts) {
+       // Trouver l'index de l'entrée du produit à supprimer
+       const productIndex = cartProducts.findIndex(
+         (item) => item.id === product.id
+       );
+
+       if (productIndex !== -1) {
+         // Créer une copie du panier
+         const updatedCart = [...cartProducts];
+
+         // Supprimer l'entrée du produit spécifique
+         updatedCart.splice(productIndex, 1);
+
+         // Mettre à jour le panier avec la nouvelle copie
+         setCartProducts(updatedCart);
+
+         // Mettre à jour le stockage local
+         localStorage.setItem("eShopCartItems", JSON.stringify(updatedCart));
+
+         toast.success("Produit supprimé du panier");
+       }
+     }
+   },
+   [cartProducts]
+ );
 
   const handleCartQtyIncrease = useCallback(
     (product: CartProductType) => {
@@ -188,6 +204,8 @@ useEffect(() => {
     handleClearCart,
     handleSetPaymentIntent,
     paymentIntent,
+    selectedGrams, // Ajoutez la valeur ici
+    handleSetSelectedGrams, // Ajoutez la fonction ici
   };
 
   return <CartContext.Provider value={value} {...props} />;

@@ -1,55 +1,65 @@
 import React, { useState, useEffect } from "react";
 
+
+
 interface GramPriceProps {
   product: {
     name: string;
     price: number;
   };
+  onGramChange: (grams: number) => void;
+  onTotalPriceChange: (totalPrice: number) => void; // Ajoutez cette ligne pour la fonction de changement du prix total
+  selectedGrams: number;
 }
 
-const GramPrice: React.FC<GramPriceProps> = ({ product }) => {
-  const { price } = product; // Prix de base du produit
+const GramPrice: React.FC<GramPriceProps> = ({
+  product,
+  onGramChange,
+  onTotalPriceChange, // Ajoutez cette ligne pour la fonction de changement du prix total
+}) => {
+  const { price } = product;
   const [grams, setGrams] = useState(2);
   const [totalPrice, setTotalPrice] = useState("0.00");
   const [pricePerGram, setPricePerGram] = useState("0.00");
-  const [selectedPricePerGram, setSelectedPricePerGram] = useState(0);
 
   useEffect(() => {
-    // Calculer le prix total en fonction de la quantité choisie
     let totalPrice = 0;
 
     if (grams === 2) {
       totalPrice = price;
     } else if (grams > 2 && grams <= 50) {
-      totalPrice = price + (grams - 2) * 2; // Prix dégressif pour les grammes supplémentaires jusqu'à 50g
+      totalPrice = price + (grams - 2) * 2;
     } else if (grams > 50 && grams <= 100) {
-      totalPrice = price + 48 * 2 + (grams - 50) * 1.8; // Prix dégressif pour les grammes supplémentaires entre 51g et 100g
+      totalPrice = price + 48 * 2 + (grams - 50) * 1.8;
     } else if (grams > 100) {
-      totalPrice = price + 48 * 2 + 50 * 1.8 + (grams - 100) * 1.5; // Prix dégressif pour les grammes supplémentaires au-dessus de 100g
+      totalPrice = price + 48 * 2 + 50 * 1.8 + (grams - 100) * 1.5;
     }
 
-    // Calculer le prix par gramme en fonction de la quantité choisie
     let pricePerGram = 0;
 
     if (grams === 2) {
-      pricePerGram = price / 2; // Prix par gramme pour les 2 premiers grammes
+      pricePerGram = price / 2;
     } else if (grams > 2 && grams <= 50) {
-      pricePerGram = totalPrice / grams; // Prix par gramme dégressif jusqu'à 50g
+      pricePerGram = totalPrice / grams;
     } else if (grams > 50 && grams <= 100) {
-      pricePerGram = totalPrice / grams; // Prix par gramme dégressif entre 51g et 100g
+      pricePerGram = totalPrice / grams;
     } else if (grams > 100) {
-      pricePerGram = totalPrice / grams; // Prix par gramme dégressif au-dessus de 100g
+      pricePerGram = totalPrice / grams;
     }
 
     setTotalPrice(totalPrice.toFixed(2));
-    setPricePerGram(pricePerGram.toFixed(2));
-  }, [grams, price]);
+   setPricePerGram(pricePerGram.toFixed(2));
+
+    // Appeler la fonction de rappel pour transmettre le totalPrice au composant parent
+    onTotalPriceChange(totalPrice);
+  }, [grams, price, onTotalPriceChange]);
 
   const handleGramChange = (newGrams: number) => {
     setGrams(newGrams);
+    onGramChange(newGrams);
   };
 
-  return (
+  return  (
     <div>
       <div className="flex items-center space-x-2">
         <button

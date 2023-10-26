@@ -50,7 +50,13 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
       <div>
         {cartProducts &&
           cartProducts.map((item) => {
-              return <ItemContent key={item.id.toString()} item={item} />;
+              return (
+                <ItemContent
+                  key={item.id.toString()}
+                  item={item}
+                  totalPrice={item.totalPrice}
+                />
+              );
           })}
       </div>
       <div className="border-t-[1.5px] border-black-200 py-4 flex justify-between gap-4">

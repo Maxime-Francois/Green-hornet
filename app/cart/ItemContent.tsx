@@ -8,6 +8,7 @@ import { useCart } from "../hooks/useCart";
 
 interface ItemContentProps {
   item: CartProductType;
+  totalPrice: number;
 }
 
 const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
@@ -40,18 +41,27 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
         "
       >
         <Link href={`/product/${item.id}`}>
-          <div className="relative w-[70px] aspect-square">
+          <div className="relative w-[100px] aspect-square">
             <Image
               src={item.cover}
               alt={item.name}
-              width={70} // Remplacez cette valeur par la largeur réelle de votre image en pixels
-              height={70}
+              width={100} // Remplacez cette valeur par la largeur réelle de votre image en pixels
+              height={100}
               className="object-contain"
             />
           </div>
         </Link>
         <div className="flex flex-col justify-between">
-          <Link href={`/product/${item.id}`}>{item.name}</Link>
+          <div className="text-xl">
+            <Link href={`/product/${item.id}`}>{item.name}</Link>
+          </div>
+
+          <div className="justify-self-center ">
+            <p className="text-slate-500 flex gap-2">
+              Quantité:{" "}
+              <span className="text-black">{item.selectedGrams} Grammes</span>
+            </p>
+          </div>
           <div className="w-[70px]">
             <button
               className="text-slate-500 underline"
@@ -62,7 +72,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">{formatPrice(item.price)}</div>
+      <div className="flex justify-center">{formatPrice(item.totalPrice)}</div>
       <div className="justify-self-center">
         <SetQuantity
           cartCounter={true}
@@ -76,7 +86,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
         />
       </div>
       <div className="justify-self-end font-semibold">
-        {formatPrice(item.price * item.quantity)}
+        {formatPrice(item.totalPrice * item.quantity)}
       </div>
     </div>
   );

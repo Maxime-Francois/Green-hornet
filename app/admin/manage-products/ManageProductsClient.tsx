@@ -19,6 +19,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { deleteObject, getStorage, ref } from "firebase/storage";
 import firebaseApp from "@/app/libs/firebase";
+import { AiFillEdit } from "react-icons/ai";
 
 interface ManageProductsClientProps {
   products: Product[];
@@ -102,9 +103,17 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
                 handleDelete(params.row.id, params.row.cover);
               }}
             />
-            <ActionBtn icon={MdRemoveRedEye} onClick={() => {
+            <ActionBtn
+              icon={AiFillEdit} // Remplacez MdEdit par l'icône de modification souhaitée
+              onClick={() => {
+                router.push(`/edit-product/${params.row.id}`);
+              }}
+            />
+            <ActionBtn
+              icon={MdRemoveRedEye}
+              onClick={() => {
                 router.push(`/product/${params.row.id}`);
-            }} 
+              }}
             />
           </div>
         );

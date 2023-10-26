@@ -6,6 +6,7 @@ const Banner: React.FC = () => {
   const [activeItem, setActiveItem] = useState(0);
   const carouselItems = [
     "/images/carousel/Halloweed.png",
+    "/images/carousel/hornet-banner.png",
    
   ];
 
