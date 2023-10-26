@@ -52,28 +52,33 @@ const handleSetSelectedGrams = (grams: number) => {
     setPaymentIntent(paymentIntent);
   }, []);
 
-  useEffect(() => {
-    const getTotals = () => {
-      if (cartProducts) {
-        const { total, qty } = cartProducts.reduce(
-          (acc, item) => {
-            const itemTotal = item.totalPrice * item.quantity;
-            acc.total += itemTotal;
-            acc.qty += item.quantity;
-
-            return acc;
-          },
-          {
-            total: 0,
-            qty: 0,
+useEffect(() => {
+  const getTotals = () => {
+    if (cartProducts) {
+      const { total, qty } = cartProducts.reduce(
+        (acc, item) => {
+          let itemTotal;
+          if (item.category === "Huiles" || item.category === "Accessoires") {
+            itemTotal = item.price * item.quantity;
+          } else {
+            itemTotal = item.totalPrice * item.quantity;
           }
-        );
-        setCartTotalQty(qty);
-        setCartTotalAmount(total);
-      }
-    };
-    getTotals();
-  }, [cartProducts]);
+          acc.total += itemTotal;
+          acc.qty += item.quantity;
+
+          return acc;
+        },
+        {
+          total: 0,
+          qty: 0,
+        }
+      );
+      setCartTotalQty(qty);
+      setCartTotalAmount(total);
+    }
+  };
+  getTotals();
+}, [cartProducts]);
 
   const handleAddProductToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {

@@ -17,6 +17,12 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
     handleCartQtyIncrease,
     handleCartQtyDecrease,
   } = useCart();
+
+   const displayPrice =
+     item.category === "Huiles" || item.category === "Accessoires"
+       ? item.price
+       : item.totalPrice;
+
   return (
     <div
       className="
@@ -72,7 +78,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">{formatPrice(item.totalPrice)}</div>
+      <div className="flex justify-center">{formatPrice(displayPrice)}</div>
       <div className="justify-self-center">
         <SetQuantity
           cartCounter={true}
@@ -86,7 +92,7 @@ const ItemContent: React.FC<ItemContentProps> = ({ item }) => {
         />
       </div>
       <div className="justify-self-end font-semibold">
-        {formatPrice(item.totalPrice * item.quantity)}
+        {formatPrice(displayPrice * item.quantity)}
       </div>
     </div>
   );
